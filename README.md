@@ -29,10 +29,8 @@ It would be great if you use a state machine (XState - [XState Documentation](ht
 - Chat bot is typing or generating an image
 
 
-
-Feel free to use any chatbot you know. The main purpose is to understand how you can use Svelte and your ability to deploy your code.
-
 ## Deliverables
+Feel free to use any chatbot you know. The main purpose is to understand how you can use Svelte and your ability to deploy your code.
 
 As a result, please provide:
 - The link to the deployed app
