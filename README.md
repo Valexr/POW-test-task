@@ -15,7 +15,7 @@ Concentrate only on textarea behavior, you don't need to focus on bot answers.
 
 ## Tech Stack
 
-- SvelteKit
+- SvelteKit (Svelte)
 - TypeScript
 - Tailwind CSS
 
@@ -30,10 +30,10 @@ It would be great if you use a state machine (XState - [XState Documentation](ht
 
 
 ## Deliverables
-Feel free to use any chatbot you know. The main purpose is to understand how you can use Svelte and your ability to deploy your code.
+Feel free to use any chatbot you know to inspire how it might look and work. The main purpose is to understand how you can use Svelte and your ability to deploy the code.
 
 As a result, please provide:
-- The link to the deployed app
+- The link to the deployed app. You can use Vercel for the deployment process; there is a free tier for personal purposes.
 - The link to the repository with the code
 
 Good luck!
