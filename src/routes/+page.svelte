@@ -1,20 +1,15 @@
 <script lang="ts" module>
-	import type { PageData, ActionData } from './$types';
 	import { expand, submit } from '$lib/actions.js';
-
-	const placeholder = ' Ask anything';
+	import type { PageData, ActionData } from './$types.js';
 </script>
 
 <script lang="ts">
 	let { data, form }: { data: PageData; form: ActionData } = $props();
 	let type = $state('Image');
 	let value = $state('');
-</script>
 
-{#if form?.success}
-	{JSON.stringify(form)}
-	<p>Successfully requested!</p>
-{/if}
+	const placeholder = ' Ask anything';
+</script>
 
 <section>
 	<p>
@@ -24,6 +19,11 @@
 		with soft sunlight filtering through the trees, creating a warm, inviting atmosphere against the
 		chilly backdrop.
 	</p>
+	<br />
+	{#if form?.success}
+		{JSON.stringify(form)}
+		<p>Successfully requested!</p>
+	{/if}
 </section>
 
 <form method="POST">

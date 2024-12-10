@@ -1,12 +1,10 @@
-import type { Actions } from './$types';
+import type { Actions } from './$types.js';
 
 export const actions = {
     default: async (e) => {
-        console.log(e);
         const data = await e.request.formData();
-        console.log(data)
-        const textarea = data.get('textarea');
-        console.log(textarea)
+        const request = data.get('request');
+        console.log(e, data, request)
 
         return { success: true };
     }
