@@ -25,3 +25,12 @@ export function expand(node: HTMLTextAreaElement) {
         node.style.height = `${node.scrollHeight}px`;
     };
 }
+
+export function submit(node: HTMLTextAreaElement) {
+    node.onkeydown = (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            node.form?.submit();
+        }
+    };
+}
