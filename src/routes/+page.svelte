@@ -28,20 +28,20 @@
 
 <form method="POST">
 	<label for="" class="flex gap-1">
-		<!-- <img id="orb" alt="orb" src="orb.png" /> -->
+		<!-- svelte-ignore element_invalid_self_closing_tag -->
 		<textarea
-			name="textarea"
+			name="request"
 			use:expand
 			use:submit
 			{placeholder}
 			bind:value
 			class="p-6 pb-12"
 			class:pb-16={value.includes('\n')}
-		></textarea>
+		/>
 	</label>
 	<fieldset class="z-index-1 flex">
 		{#each ['Text', 'Image'] as radio}
-			<label class:checked={type === radio} class="flex gap-2">
+			<label class:checked={type === radio} class="type flex gap-2">
 				<img alt={radio} src="{radio}.svg" class="opacity-50" />
 				<input type="radio" name="type" value={radio} bind:group={type} class="hidden" />
 				{#if type === radio}
@@ -58,7 +58,10 @@
 		background: url('orb.png') no-repeat left bottom;
 		background-size: 60px;
 		mix-blend-mode: exclusion;
-		padding-left: 45px;
+		padding-left: 60px;
+		& > label {
+			padding: 0;
+		}
 	}
 	fieldset {
 		position: absolute;
