@@ -7,13 +7,13 @@
 
 <script lang="ts">
 	let { data, form }: { data: PageData; form: ActionData } = $props();
+	let type = $state('Image');
+	let value = $state('');
 </script>
 
 {#if form?.success}
-	<!-- this message is ephemeral; it exists because the page was rendered in
-	       response to a form submission. it will vanish if the user reloads -->
 	{JSON.stringify(form)}
-	<p>Successfully logged in! Welcome back, {JSON.stringify(data)}</p>
+	<p>Successfully requested!</p>
 {/if}
 
 <section>
@@ -28,30 +28,67 @@
 
 <form method="POST">
 	<label for="" class="flex gap-1">
-		<img alt="orb" src="orb.png" />
-		<textarea name="textarea" use:expand use:submit {placeholder}></textarea>
+		<img id="orb" alt="orb" src="orb.png" />
+		<textarea
+			name="textarea"
+			use:expand
+			use:submit
+			{placeholder}
+			bind:value
+			class="p-6 pb-12"
+			class:pb-20={value.includes('\n')}
+		></textarea>
 	</label>
-	<fieldset>
-		<button type="button">Text</button>
-		<button>Image</button>
+	<fieldset class="z-index-1 flex">
+		{#each ['Text', 'Image'] as radio}
+			<label class:checked={type === radio} class="flex gap-2">
+				<img alt={radio} src="{radio}.svg" class="opacity-50" />
+				<input type="radio" name="type" value={radio} bind:group={type} class="hidden" />
+				{#if type === radio}
+					{radio}
+				{/if}
+			</label>
+		{/each}
 	</fieldset>
 </form>
 
 <style>
 	form {
+		position: relative;
+	}
+	fieldset {
+		position: absolute;
+		flex-wrap: wrap;
+		bottom: 24px;
+		left: 70px;
+		&img {
+			width: 20px;
+		}
 	}
 	label {
-		/* display: flex; */
+		display: flex;
+		border-radius: 60px;
+		padding: 0.45em 1em;
+		&.checked {
+			color: rgba(242, 241, 244);
+			background-color: rgba(250, 237, 237, 0.08);
+			& img {
+				opacity: 1;
+			}
+		}
 	}
-	img {
+
+	img#orb {
 		mix-blend-mode: lighten;
 		width: 40px;
 		height: 40px;
 		flex: 1;
 		aspect-ratio: 1/1;
+		bottom: 0;
+		position: relative;
 	}
 	textarea {
-		background-color: rgba(255, 255, 255, 0.08);
+		background-color: rgba(250, 237, 237, 0.08);
 		outline: 1px solid rgba(255, 255, 255, 0.08);
 		border: 1px solid rgba(255, 255, 255, 0.2);
 		-webkit-background-clip: padding-box; /* for Safari */
@@ -59,12 +96,16 @@
 		border-radius: 30px;
 		width: 100%;
 		min-height: 96px;
-		padding: 24px;
+		/* padding: 24px; */
+		/* padding-bottom: 50px; */
 		font-size: inherit;
 		resize: none;
 	}
 	textarea::placeholder {
-		/* color: rgba(255, 255, 255, 1); */
+		color: rgba(242, 241, 244, 0.6);
+	}
+	textarea::before {
+		content: attr(placeholder);
 	}
 	button {
 		font-size: inherit;
