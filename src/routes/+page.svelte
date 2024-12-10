@@ -65,43 +65,32 @@
 		flex-wrap: wrap;
 		bottom: 24px;
 		left: 70px;
-		&img {
-			width: 20px;
-		}
 	}
 	label {
 		display: flex;
 		border-radius: 60px;
 		padding: 0.45em 1em;
+		& img {
+			cursor: pointer;
+		}
 		&.checked {
 			color: rgba(242, 241, 244);
 			background-color: rgba(250, 237, 237, 0.08);
 			& img {
 				opacity: 1;
+				cursor: auto;
 			}
 		}
 	}
 
-	/* img#orb {
-		mix-blend-mode: lighten;
-		width: 40px;
-		height: 40px;
-		flex: 1;
-		aspect-ratio: 1/1;
-		bottom: 0;
-		position: relative;
-	} */
 	textarea {
 		background-color: rgba(250, 237, 237, 0.08);
 		outline: 1px solid rgba(255, 255, 255, 0.08);
 		border: 1px solid rgba(255, 255, 255, 0.2);
-		-webkit-background-clip: padding-box; /* for Safari */
-		background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
+		background-clip: padding-box;
 		border-radius: 30px;
 		width: 100%;
 		min-height: 96px;
-		/* padding: 24px; */
-		/* padding-bottom: 50px; */
 		font-size: inherit;
 		resize: none;
 	}
