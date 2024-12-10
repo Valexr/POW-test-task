@@ -1,8 +1,20 @@
 <script lang="ts" module>
-	import { expand } from '$lib/actions.js';
+	import type { PageData, ActionData } from './$types';
+	import { expand, submit } from '$lib/actions.js';
 
 	const placeholder = ' Ask anything';
 </script>
+
+<script lang="ts">
+	let { data, form }: { data: PageData; form: ActionData } = $props();
+</script>
+
+{#if form?.success}
+	<!-- this message is ephemeral; it exists because the page was rendered in
+	       response to a form submission. it will vanish if the user reloads -->
+	{JSON.stringify(form)}
+	<p>Successfully logged in! Welcome back, {JSON.stringify(data)}</p>
+{/if}
 
 <section>
 	<p>
@@ -14,14 +26,14 @@
 	</p>
 </section>
 
-<form>
+<form method="POST">
 	<label for="" class="flex gap-1">
 		<img alt="orb" src="orb.png" />
-		<textarea use:expand {placeholder}></textarea>
+		<textarea name="textarea" use:expand use:submit {placeholder}></textarea>
 	</label>
 	<fieldset>
 		<button type="button">Text</button>
-		<button type="button">Image</button>
+		<button>Image</button>
 	</fieldset>
 </form>
 
