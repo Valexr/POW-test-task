@@ -1,0 +1,21 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@import url('https://fonts.googleapis.com/css2?family=Sora&display=swap');
+
+body {
+    background-color: #232323;
+    color: #f2f1f4;
+    font-family: "Sora", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 15px;
+    line-height: 145%;
+}
+
+:focus-visible {
+    outline: none !important;
+    outline-color: rgb(35, 35, 157);
+}
