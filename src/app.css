@@ -2,7 +2,7 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-@import url('https://fonts.googleapis.com/css2?family=Sora&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
 
 :root {
     --text-primary: rgb(242, 241, 244);
@@ -18,7 +18,7 @@ body {
     color: rgb(242, 241, 244);
     font-family: "Sora", sans-serif;
     font-optical-sizing: auto;
-    font-weight: 100;
+    font-weight: 300;
     font-style: normal;
     font-size: 15px;
     line-height: 145%;
