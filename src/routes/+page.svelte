@@ -28,7 +28,7 @@
 
 <form method="POST">
 	<label for="" class="flex gap-1">
-		<img id="orb" alt="orb" src="orb.png" />
+		<!-- <img id="orb" alt="orb" src="orb.png" /> -->
 		<textarea
 			name="textarea"
 			use:expand
@@ -36,7 +36,7 @@
 			{placeholder}
 			bind:value
 			class="p-6 pb-12"
-			class:pb-20={value.includes('\n')}
+			class:pb-16={value.includes('\n')}
 		></textarea>
 	</label>
 	<fieldset class="z-index-1 flex">
@@ -55,6 +55,10 @@
 <style>
 	form {
 		position: relative;
+		background: url('orb.png') no-repeat left bottom;
+		background-size: 60px;
+		mix-blend-mode: exclusion;
+		padding-left: 45px;
 	}
 	fieldset {
 		position: absolute;
@@ -78,7 +82,7 @@
 		}
 	}
 
-	img#orb {
+	/* img#orb {
 		mix-blend-mode: lighten;
 		width: 40px;
 		height: 40px;
@@ -86,7 +90,7 @@
 		aspect-ratio: 1/1;
 		bottom: 0;
 		position: relative;
-	}
+	} */
 	textarea {
 		background-color: rgba(250, 237, 237, 0.08);
 		outline: 1px solid rgba(255, 255, 255, 0.08);
@@ -103,11 +107,5 @@
 	}
 	textarea::placeholder {
 		color: rgba(242, 241, 244, 0.6);
-	}
-	textarea::before {
-		content: attr(placeholder);
-	}
-	button {
-		font-size: inherit;
 	}
 </style>
