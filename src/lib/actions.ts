@@ -19,8 +19,8 @@ export function resize(node: HTMLElement) {
 }
 
 export function expand(node: HTMLTextAreaElement) {
-    node.style.height = 'auto';
-    node.style.height = `${node.scrollHeight}px`;
+    // node.style.height = 'auto';
+    // node.style.height = `${node.scrollHeight}px`;
     node.oninput = (_e) => {
         node.style.height = 'auto';
         node.style.height = `${node.scrollHeight}px`;
