@@ -1,7 +1,7 @@
 <script lang="ts" module>
 	import { base } from '$app/paths';
 	import { expand, submit } from '$lib/actions.js';
-	import { bot } from '$lib/stores.js';
+	// import { bot } from '$lib/stores.js';
 
 	function deferred<T>() {
 		let resolve!: (value: T | PromiseLike<T>) => void;
