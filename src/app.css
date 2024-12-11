@@ -6,16 +6,15 @@
 
 :root {
     --text-primary: rgb(242, 241, 244);
-    --text-secondary: rgb(35, 35, 157);
+    --text-secondary: rgba(242, 241, 244, 0.5);
     --bg-primary: rgb(35, 35, 35);
-    --bg-secondary: rgb(242, 241, 244);
-    --bg-tertiary: rgb(255, 255, 255);
+    --bg-secondary: rgba(255, 255, 255, 0.08);
     --accent: rgb(35, 35, 157);
 }
 
 body {
-    background-color: rgb(35, 35, 35);
-    color: rgb(242, 241, 244);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
     font-family: "Sora", sans-serif;
     font-optical-sizing: auto;
     font-weight: 300;
@@ -24,7 +23,10 @@ body {
     line-height: 145%;
 }
 
+:focus,
 :focus-visible {
+    border: none !important;
     outline: none !important;
-    outline-color: rgb(35, 35, 157);
+    box-shadow: none !important;
+    outline-color: var(--accent);
 }
