@@ -25,6 +25,6 @@ body {
 }
 
 :focus-visible {
-    outline: none !important;
+    /* outline: none !important; */
     outline-color: rgb(35, 35, 157);
 }
