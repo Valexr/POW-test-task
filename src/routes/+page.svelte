@@ -19,7 +19,7 @@
 </script>
 
 <script lang="ts">
-	let type = $state('image');
+	let type = $state('Image');
 	let value = $state('');
 	let loading = $state(false);
 	let generating = $state(false);
@@ -84,7 +84,7 @@
 		></textarea>
 	</label>
 	<fieldset class="z-index-1 flex">
-		{#each ['text', 'image'] as radio}
+		{#each ['Text', 'Image'] as radio}
 			<label class:checked={type === radio} class="type flex gap-2">
 				<img alt={radio} src="{base}/{radio}.svg" class="opacity-50" />
 				<input type="radio" name="type" value={radio} bind:group={type} class="hidden" />
@@ -115,6 +115,7 @@
 	}
 	label {
 		display: flex;
+		align-items: center;
 		border-radius: 60px;
 		padding: 0.45em 1em;
 		& img {
