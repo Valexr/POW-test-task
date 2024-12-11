@@ -27,10 +27,11 @@ export function expand(node: HTMLTextAreaElement) {
 }
 
 export function submit(node: HTMLTextAreaElement) {
-    node.onkeydown = (e) => {
+    node.onkeydown = async (e) => {
         if (e.key === 'Enter' && !e.shiftKey && node.value) {
             e.preventDefault();
-            node.form?.submit();
+            // node.form?.submit();
+            node.form?.dispatchEvent(new CustomEvent('submit', { detail: e }));
         }
     };
 }
