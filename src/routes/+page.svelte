@@ -69,8 +69,9 @@
 	{/if} -->
 </section>
 
-<form id="form" {onsubmit}>
-	<label for="" class="flex gap-1">
+<form id="form" {onsubmit} style="--base: {base}">
+	<!-- <img src="{base}/orb.png" alt="orb" /> -->
+	<label class="flex gap-1">
 		<textarea
 			disabled={placeholder.includes('loading...')}
 			name="request"
@@ -98,7 +99,7 @@
 <style>
 	#form {
 		position: relative;
-		background: url('orb.png') no-repeat left bottom;
+		background: url('/orb.png') no-repeat left bottom;
 		background-size: 75px;
 		mix-blend-mode: exclusion;
 		padding-left: 75px;
