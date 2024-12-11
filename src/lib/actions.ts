@@ -19,6 +19,7 @@ export function resize(node: HTMLElement) {
 }
 
 export function expand(node: HTMLTextAreaElement) {
+    node.style.height = 'auto';
     node.style.height = `${node.scrollHeight}px`;
     node.oninput = (_e) => {
         node.style.height = 'auto';
@@ -26,12 +27,12 @@ export function expand(node: HTMLTextAreaElement) {
     };
 }
 
-export function submit(node: HTMLTextAreaElement) {
+export function submit(node: HTMLTextAreaElement, native = false) {
     node.onkeydown = async (e) => {
         if (e.key === 'Enter' && !e.shiftKey && node.value) {
             e.preventDefault();
-            // node.form?.submit();
-            node.form?.dispatchEvent(new CustomEvent('submit', { detail: e }));
+            if (native) node.form?.submit();
+            else node.form?.dispatchEvent(new CustomEvent('submit', { detail: e }));
         }
     };
 }
