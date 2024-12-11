@@ -19,7 +19,7 @@
 </script>
 
 <script lang="ts">
-	let type = $state('Image');
+	let type = $state('image');
 	let value = $state('');
 	let loading = $state(false);
 	let generating = $state(false);
@@ -47,10 +47,10 @@
 		{#if response}
 			{#await response.promise}
 				<span id="loader">
-					<img src="progress.svg" alt="progress" />
+					<img src="{base}/progress.svg" alt="progress" />
 				</span>
 			{:then response}
-				<img src="response.png" alt="Response" />
+				<img src="{base}/response.png" alt="Response" />
 			{/await}
 		{/if}
 	</p>
@@ -84,7 +84,7 @@
 		></textarea>
 	</label>
 	<fieldset class="z-index-1 flex">
-		{#each ['Text', 'Image'] as radio}
+		{#each ['text', 'image'] as radio}
 			<label class:checked={type === radio} class="type flex gap-2">
 				<img alt={radio} src="{base}/{radio}.svg" class="opacity-50" />
 				<input type="radio" name="type" value={radio} bind:group={type} class="hidden" />
