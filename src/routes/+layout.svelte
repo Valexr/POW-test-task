@@ -12,9 +12,10 @@
 
 <style>
 	main {
+		position: relative;
 		display: grid;
 		grid-template-rows: 1fr auto;
-		min-height: 100vh;
+		min-height: 100dvh;
 		max-width: 70ch;
 		margin: auto;
 		padding: 1em;
