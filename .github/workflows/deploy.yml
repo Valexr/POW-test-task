@@ -2,9 +2,9 @@ name: Build and deploy
 
 on:
     push:
-        branches: [main]
+        branches: [valexr]
         paths:
-            - www/**
+            - src/**
 
 jobs:
     build:
@@ -30,4 +30,4 @@ jobs:
               uses: JamesIves/github-pages-deploy-action@v4
               with:
                   branch: gh-pages
-                  folder: ./www/build
+                  folder: ./build
