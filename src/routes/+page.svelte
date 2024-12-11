@@ -1,4 +1,5 @@
 <script lang="ts" module>
+	import { base } from '$app/paths';
 	import { expand, submit } from '$lib/actions.js';
 	import { bot } from '$lib/stores.js';
 
@@ -84,7 +85,7 @@
 	<fieldset class="z-index-1 flex">
 		{#each ['Text', 'Image'] as radio}
 			<label class:checked={type === radio} class="type flex gap-2">
-				<img alt={radio} src="{radio}.svg" class="opacity-50" />
+				<img alt={radio} src="{base}{radio}.svg" class="opacity-50" />
 				<input type="radio" name="type" value={radio} bind:group={type} class="hidden" />
 				{#if type === radio}
 					{radio}
