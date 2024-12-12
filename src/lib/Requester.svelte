@@ -41,9 +41,11 @@
 				{/if}
 			</label>
 		{/each}
-		<button type="submit">
-			<img src="{base}/{status ? 'rectangle' : 'arrow-up'}.svg" alt="alt" />
-		</button>
+		{#if value}
+			<button type="submit">
+				<img src="{base}/{status ? 'rectangle' : 'arrow-up'}.svg" alt="alt" />
+			</button>
+		{/if}
 	</fieldset>
 </form>
 

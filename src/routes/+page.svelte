@@ -22,6 +22,12 @@
 	let status = $state('');
 	let value = $state('');
 
+	const text = `Please create an image of a vintage-style motorcycle parked on a snow-covered road, surrounded
+		by evergreen trees. The motorcycle features a sleek design with a vibrant blue fuel tank, black
+		accents, and rugged tires suitable for various terrains. The setting suggests a cold winter day,
+		with soft sunlight filtering through the trees, creating a warm, inviting atmosphere against the
+		chilly backdrop.`;
+
 	function onsubmit(e: SubmitEvent) {
 		console.log(e);
 
@@ -33,7 +39,7 @@
 		value = '';
 
 		setTimeout(() => {
-			response?.resolve('response.png');
+			response?.resolve(type === 'Text' ? text : 'response.png');
 			status = '';
 		}, 1000);
 	}
@@ -47,17 +53,13 @@
 					<img src="{base}/progress.svg" alt="progress" />
 				</span>
 			{:then response}
-				<img src="{base}/{response}" alt="Response" />
+				{#if response === text}
+					{text}
+				{:else}
+					<img src="{base}/{response}" alt="Response" />
+				{/if}
 			{/await}
 		{/if}
-	</p>
-	<br />
-	<p>
-		Please create an image of a vintage-style motorcycle parked on a snow-covered road, surrounded
-		by evergreen trees. The motorcycle features a sleek design with a vibrant blue fuel tank, black
-		accents, and rugged tires suitable for various terrains. The setting suggests a cold winter day,
-		with soft sunlight filtering through the trees, creating a warm, inviting atmosphere against the
-		chilly backdrop.
 	</p>
 </section>
 
@@ -66,9 +68,9 @@
 </section>
 
 <style>
-	#chat {
-		/* overflow-y: scroll; */
-	}
+	/* #chat {
+		overflow-y: scroll;
+	} */
 	#requester {
 		position: absolute;
 		inset: 1em;
