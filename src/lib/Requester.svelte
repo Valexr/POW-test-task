@@ -27,17 +27,16 @@
 <form id="form" {onsubmit}>
 	<fieldset class="flex flex-wrap p-3">
 		<label class="flex-[100%]">
-			<!-- svelte-ignore element_invalid_self_closing_tag -->
 			<textarea
 				class="font-inherit w-full resize-none border-0 bg-transparent outline-none"
 				disabled={status.length > 0}
 				placeholder={status || ' Ask anything'}
 				name="request"
 				rows="1"
-				use:expand
+				use:expand={value}
 				use:submit={native}
 				bind:value
-			/>
+			></textarea>
 		</label>
 		{#each types as radio}
 			<label class:checked={type === radio} class="type flex gap-2">
@@ -48,7 +47,7 @@
 				{/if}
 			</label>
 		{/each}
-		<button>
+		<button type="submit">
 			<img src="{base}/{status ? 'rectangle' : 'arrow-up'}.svg" alt="alt" />
 		</button>
 	</fieldset>
