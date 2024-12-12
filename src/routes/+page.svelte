@@ -1,8 +1,6 @@
 <script lang="ts" module>
 	import { base } from '$app/paths';
-	import Asker from '$lib/Asker.svelte';
-	import { expand, submit } from '$lib/actions.js';
-	// import { bot } from '$lib/stores.js';
+	import Requester from '$lib/Requester.svelte';
 
 	function deferred<T>() {
 		let resolve!: (value: T | PromiseLike<T>) => void;
@@ -20,25 +18,19 @@
 </script>
 
 <script lang="ts">
-	let type = $state('Image');
 	let value = $state('');
-	let loading = $state(false);
-	let generating = $state(false);
-
 	let response = $state<Deferred<string>>();
 
-	let placeholder = $state(' Ask anything');
+	let status = $state('');
 
 	function onsubmit(e: SubmitEvent) {
-		// const data = new FormData(e.target as HTMLFormElement);
-		// const request = data.get('request');
-		placeholder = 'loading...';
+		response = deferred<string>();
+		status = 'loading...';
 		value = '';
 
-		response = deferred<string>();
 		setTimeout(() => {
 			response?.resolve('response.png');
-			placeholder = ' Ask anything';
+			status = '';
 		}, 1000);
 	}
 </script>
@@ -65,11 +57,18 @@
 	</p>
 </section>
 
-<Asker {onsubmit} native={false} bind:value />
+<section id="requester">
+	<Requester {onsubmit} native={false} bind:value bind:status />
+</section>
 
 <style>
 	#chat {
 		overflow-y: scroll;
+	}
+	#requester {
+		position: absolute;
+		inset: 1em;
+		top: auto;
 	}
 	#loader {
 		max-width: 512px;

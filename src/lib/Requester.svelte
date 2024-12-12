@@ -3,26 +3,12 @@
 	import { expand, submit } from '$lib/actions.js';
 	import type { EventHandler } from 'svelte/elements';
 
-	function deferred<T>() {
-		let resolve!: (value: T | PromiseLike<T>) => void;
-		let reject!: (reason?: any) => void;
-
-		const promise = new Promise<T>((res, rej) => {
-			resolve = res;
-			reject = rej;
-		});
-
-		return { promise, resolve, reject };
-	}
-
-	type Deferred<D> = ReturnType<typeof deferred<D>>;
-
 	type Props = {
 		type: 'Text' | 'Image';
 		value: string;
 		types: string[];
 		onsubmit: EventHandler<SubmitEvent, HTMLFormElement>;
-		status: '' | 'loading' | 'generating' | 'typing';
+		status: string;
 		native: boolean;
 	};
 </script>
@@ -30,28 +16,12 @@
 <script lang="ts">
 	let {
 		type = 'Image',
-		value = $bindable(''),
 		types = ['Text', 'Image'],
-		onsubmit,
-		status = '',
-		native = false
+		value = $bindable(''),
+		status = $bindable(''),
+		native = false,
+		onsubmit
 	}: Partial<Props> = $props();
-
-	let response = $state<Deferred<string>>();
-	let placeholder = $state(' Ask anything');
-
-	// function onsubmit(e: SubmitEvent) {
-	// 	// const data = new FormData(e.target as HTMLFormElement);
-	// 	// const request = data.get('request');
-	// 	placeholder = 'loading...';
-	// 	value = '';
-
-	// 	response = deferred<string>();
-	// 	setTimeout(() => {
-	// 		response?.resolve('response.png');
-	// 		placeholder = ' Ask anything';
-	// 	}, 1000);
-	// }
 </script>
 
 <form id="form" {onsubmit}>
@@ -61,12 +31,12 @@
 			<textarea
 				class="font-inherit w-full resize-none border-0 bg-transparent outline-none"
 				disabled={status.length > 0}
+				placeholder={status || ' Ask anything'}
 				name="request"
 				rows="1"
 				use:expand
 				use:submit={native}
 				bind:value
-				{placeholder}
 			/>
 		</label>
 		{#each types as radio}
@@ -86,9 +56,7 @@
 
 <style>
 	#form {
-		position: absolute;
-		inset: 1em;
-		top: auto;
+		position: relative;
 		background: url('/orb.png') no-repeat left bottom;
 		background-size: 60px;
 		mix-blend-mode: lighten;
