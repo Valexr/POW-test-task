@@ -67,7 +67,7 @@
 
 <style>
 	#chat {
-		overflow-y: scroll;
+		/* overflow-y: scroll; */
 	}
 	#requester {
 		position: absolute;
