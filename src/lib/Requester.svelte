@@ -52,10 +52,11 @@
 <style>
 	#form {
 		position: relative;
-		background: url('/orb.png') no-repeat left bottom;
-		background-size: 60px;
+		background: url('/orb.png') no-repeat left 30px;
+		background-size: auto;
+		background-size: 90px;
 		mix-blend-mode: lighten;
-		padding-left: 60px;
+		padding-left: 90px;
 
 		& > fieldset {
 			border: 1px solid var(--bg-secondary);
