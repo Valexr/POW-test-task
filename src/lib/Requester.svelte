@@ -4,24 +4,18 @@
 	import type { EventHandler } from 'svelte/elements';
 
 	type Props = {
-		type: 'Text' | 'Image';
 		value: string;
-		types: string[];
-		onsubmit: EventHandler<SubmitEvent, HTMLFormElement>;
 		status: string;
-		native: boolean;
+		onsubmit: EventHandler<SubmitEvent, HTMLFormElement>;
 	};
 </script>
 
 <script lang="ts">
-	let {
-		type = 'Image',
-		types = ['Text', 'Image'],
-		value = $bindable(''),
-		status = $bindable(''),
-		native = false,
-		onsubmit
-	}: Partial<Props> = $props();
+	let { value = $bindable(''), status = $bindable(''), onsubmit }: Partial<Props> = $props();
+
+	let type = $state('Image');
+
+	const types = ['Text', 'Image'];
 </script>
 
 <form id="form" {onsubmit}>
@@ -34,7 +28,7 @@
 				name="request"
 				rows="1"
 				use:expand={value}
-				use:submit={native}
+				use:submit
 				bind:value
 			></textarea>
 		</label>

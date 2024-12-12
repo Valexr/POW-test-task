@@ -18,14 +18,18 @@
 </script>
 
 <script lang="ts">
-	let value = $state('');
 	let response = $state<Deferred<string>>();
-
 	let status = $state('');
+	let value = $state('');
 
 	function onsubmit(e: SubmitEvent) {
+		console.log(e);
+
+		const data = new FormData(e.target as HTMLFormElement);
+		const { type, request } = Object.fromEntries(data);
+
 		response = deferred<string>();
-		status = 'loading...';
+		status = type === 'Text' ? 'typing...' : 'loading...';
 		value = '';
 
 		setTimeout(() => {
@@ -43,7 +47,7 @@
 					<img src="{base}/progress.svg" alt="progress" />
 				</span>
 			{:then response}
-				<img src="{base}/response.png" alt="Response" />
+				<img src="{base}/{response}" alt="Response" />
 			{/await}
 		{/if}
 	</p>
@@ -58,7 +62,7 @@
 </section>
 
 <section id="requester">
-	<Requester {onsubmit} native={false} bind:value bind:status />
+	<Requester {onsubmit} {status} bind:value />
 </section>
 
 <style>

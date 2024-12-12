@@ -28,14 +28,12 @@ export function expand(node: HTMLTextAreaElement, value: string) {
     }
 }
 
-export function submit(node: HTMLTextAreaElement, native = false) {
+export function submit(node: HTMLTextAreaElement) {
     node.onkeydown = async (e) => {
         if (e.key === 'Enter' && !e.shiftKey && node.value) {
             e.preventDefault();
             const submiter = node.form?.querySelector('[type="submit"]') as HTMLElement;
             if (submiter) submiter.click();
-            // if (native) node.form?.submit();
-            // else node.form?.dispatchEvent(new CustomEvent('submit', { detail: e }));
         }
     };
 }
