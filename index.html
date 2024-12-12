@@ -3,35 +3,45 @@
 
     <head>
         <meta charset="utf-8" />
-        <link rel="icon" href="/POW-test-task/favicon.png" />
+        <link rel="icon" href="./favicon.png" />
         <meta name="viewport" content='width=device-width,initial-scale=1,maximum-scale=1' />
         
-		<link rel="modulepreload" href="/POW-test-task/_app/immutable/entry/start.Ck6DNLGD.js">
-		<link rel="modulepreload" href="/POW-test-task/_app/immutable/chunks/entry.CEm-K1_8.js">
-		<link rel="modulepreload" href="/POW-test-task/_app/immutable/chunks/runtime.CrirDcAX.js">
-		<link rel="modulepreload" href="/POW-test-task/_app/immutable/chunks/paths.BmTVYQ-6.js">
-		<link rel="modulepreload" href="/POW-test-task/_app/immutable/entry/app.DIU1lRZq.js">
-		<link rel="modulepreload" href="/POW-test-task/_app/immutable/chunks/store.CKE1O8y_.js">
-		<link rel="modulepreload" href="/POW-test-task/_app/immutable/chunks/disclose-version.D5ZjYSUx.js">
-		<link rel="modulepreload" href="/POW-test-task/_app/immutable/chunks/props.CH9VcAJZ.js">
+		<link href="./_app/immutable/assets/0.C9VvCj0T.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2.DdfUlejh.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.5ml-Bm0f.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/entry.DoaDJ3X4.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/runtime.CrirDcAX.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/paths.DfG1tzYH.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.D6WWhotM.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/store.CKE1O8y_.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/disclose-version.D5ZjYSUx.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/props.CH9VcAJZ.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/0.Btxv83Ha.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/2.Dedw9Iax.js">
     </head>
 
     <body data-sveltekit-preload-data="hover">
-        
+        <!--[--><!--[--><!----><main class="svelte-14n7r00"><!----><section id="chat"><p><!--[!--><!--]--></p></section> <section id="requester" class="svelte-1ikt9w4"><form id="form" class="svelte-yocft7"><fieldset class="flex flex-wrap p-3 svelte-yocft7"><label class="flex-[100%]"><textarea class="font-inherit w-full resize-none border-0 bg-transparent outline-none svelte-yocft7" placeholder=" Ask anything" name="request" rows="1"></textarea></label> <!--[--><label class="type flex gap-2 svelte-yocft7 "><img alt="Text" src="./Text.svg" class="opacity-50 svelte-yocft7"> <input type="radio" name="type" value="Text" class="hidden"> <!--[!--><!--]--></label><label class="type flex gap-2 svelte-yocft7 checked"><img alt="Image" src="./Image.svg" class="opacity-50 svelte-yocft7"> <input type="radio" name="type" value="Image" checked class="hidden"> <!--[-->Image<!--]--></label><!--]--> <!--[!--><!--]--></fieldset></form><!----></section><!----><!----></main><!----><!--]--> <!--[!--><!--]--><!--]-->
+			
 			<script>
 				{
-					__sveltekit_e2bue6 = {
-						base: "/POW-test-task",
+					__sveltekit_1ukhgyn = {
+						base: new URL(".", location).pathname.slice(0, -1),
 						assets: "/POW-test-task"
 					};
 
 					const element = document.currentScript.parentElement;
 
 					Promise.all([
-						import("/POW-test-task/_app/immutable/entry/start.Ck6DNLGD.js"),
-						import("/POW-test-task/_app/immutable/entry/app.DIU1lRZq.js")
+						import("./_app/immutable/entry/start.5ml-Bm0f.js"),
+						import("./_app/immutable/entry/app.D6WWhotM.js")
 					]).then(([kit, app]) => {
-						kit.start(app, element);
+						kit.start(app, element, {
+							node_ids: [0, 2],
+							data: [null,null],
+							form: null,
+							error: null
+						});
 					});
 				}
 			</script>
