@@ -49,8 +49,12 @@
 	<p>
 		{#if response}
 			{#await response.promise}
-				<span id="loader">
-					<img src="{base}/progress.svg" alt="progress" />
+				<span id="loader" class:text={status === 'typing...'}>
+					{#if status === 'typing...'}
+						{status}
+					{:else}
+						<img src="{base}/progress.svg" alt="progress" />
+					{/if}
 				</span>
 			{:then response}
 				{#if response === text}
@@ -85,5 +89,9 @@
 		place-content: center;
 		background-color: var(--bg-secondary);
 		border-radius: 16px;
+	}
+	#loader.text {
+		aspect-ratio: 7/1;
+		max-width: 100%;
 	}
 </style>
