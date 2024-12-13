@@ -35,13 +35,15 @@
 		const { type, request } = Object.fromEntries(data);
 
 		response = deferred<string>();
-		status = type === 'Text' ? 'typing...' : 'loading...';
 		value = '';
 
-		setTimeout(() => {
-			response?.resolve(type === 'Text' ? text : 'response.png');
-			status = '';
-		}, 1000);
+		if (request !== 'clear') {
+			status = type === 'Text' ? 'typing...' : 'loading...';
+			setTimeout(() => {
+				response?.resolve(type === 'Text' ? text : 'response.png');
+				status = '';
+			}, 1000);
+		} else response.reject('cleared');
 	}
 </script>
 
@@ -62,6 +64,8 @@
 				{:else}
 					<img src="{base}/{response}" alt="Response" />
 				{/if}
+			{:catch error}
+				{error}
 			{/await}
 		{/if}
 	</p>
