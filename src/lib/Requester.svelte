@@ -52,7 +52,7 @@
 <style>
 	#form {
 		position: relative;
-		background: url('/orb.png') no-repeat left 30px;
+		background: url('/orb.png') no-repeat left bottom -15px;
 		background-size: auto;
 		background-size: 90px;
 		mix-blend-mode: lighten;

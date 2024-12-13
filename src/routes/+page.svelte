@@ -1,32 +1,19 @@
 <script lang="ts" module>
 	import { base } from '$app/paths';
 	import Requester from '$lib/Requester.svelte';
-
-	function deferred<T>() {
-		let resolve!: (value: T | PromiseLike<T>) => void;
-		let reject!: (reason?: any) => void;
-
-		const promise = new Promise<T>((res, rej) => {
-			resolve = res;
-			reject = rej;
-		});
-
-		return { promise, resolve, reject };
-	}
-
-	type Deferred<D> = ReturnType<typeof deferred<D>>;
-</script>
-
-<script lang="ts">
-	let response = $state<Deferred<string>>();
-	let status = $state('');
-	let value = $state('');
+	import { deferred, type Deferred } from '$lib/utils.js';
 
 	const text = `Please create an image of a vintage-style motorcycle parked on a snow-covered road, surrounded
 		by evergreen trees. The motorcycle features a sleek design with a vibrant blue fuel tank, black
 		accents, and rugged tires suitable for various terrains. The setting suggests a cold winter day,
 		with soft sunlight filtering through the trees, creating a warm, inviting atmosphere against the
 		chilly backdrop.`;
+</script>
+
+<script lang="ts">
+	let response = $state<Deferred<string>>();
+	let status = $state('');
+	let value = $state('');
 
 	function onsubmit(e: SubmitEvent) {
 		console.log(e);
@@ -43,7 +30,7 @@
 				response?.resolve(type === 'Text' ? text : 'response.png');
 				status = '';
 			}, 1000);
-		} else response.reject('cleared');
+		} else response.reject('');
 	}
 </script>
 
@@ -80,9 +67,7 @@
 		overflow-y: scroll;
 	} */
 	#requester {
-		position: absolute;
-		inset: 1em;
-		top: auto;
+		@apply absolute inset-4 top-auto;
 	}
 	#loader {
 		max-width: 512px;
