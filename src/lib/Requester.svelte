@@ -41,7 +41,7 @@
 				{/if}
 			</label>
 		{/each}
-		{#if value}
+		{#if value || status}
 			<button type="submit">
 				<img src="{base}/{status ? 'rectangle' : 'arrow-up'}.svg" alt="alt" />
 			</button>
